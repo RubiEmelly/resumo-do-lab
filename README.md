@@ -123,8 +123,37 @@ Configurar o Banco de Dados  🔧
 - Criar e Utilizar um Servidor: Você precisará criar um servidor ou selecionar um servidor existente para hospedar o banco de dados.
 - Modelo de Redundância: Escolha o modelo de redundância para garantir alta disponibilidade e recuperação de falhas. (Exemplos: redundância entre zonas de disponibilidade ou réplicas em diferentes regiões).
 - Custo Estimado: O próprio Azure calcula automaticamente o custo com base na configuração escolhida, considerando fatores como capacidade de armazenamento, número de conexões e redundância.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## CURSO 📒
+### Deploy na nuvem Microsoft Azure Cloud.
+
+O deploy na nuvem Microsoft Azure é o processo de disponibilizar uma aplicação ou serviço na infraestrutura da Azure. Ele pode ser feito de várias formas, como:
+- App Services para aplicações web.
+- Máquinas Virtuais (VMs) para maior controle de ambiente.
+- Contêineres (AKS, ACI) para aplicações baseadas em Docker.
+- Azure Functions para soluções serverless.
+- Azure DevOps para automação de deploy com CI/CD.
+- O Azure oferece escalabilidade, alta disponibilidade, segurança e integração com outras soluções da Microsoft.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## CURSO 📒
+### Introdução a Conceitos de Mensageria e Service Bus com Azure
+
+Mensagem: É um pacote de dados que pode estar em diferentes formatos, como XML, JSON ou bytes.
+
+Evento: Refere-se a uma notificação leve que indica uma condição ou alteração de estado em um sistema.
+
+Filas: Armazenam mensagens até que o aplicativo receptor esteja disponível para recebê-las e processá-las. Elas garantem a entrega confiável de mensagens em uma arquitetura assíncrona.
+
+Tópicos: Permitem múltiplas assinaturas independentes, possibilitando que diferentes assinantes recebam a mesma mensagem, de acordo com seu interesse.
+
+Event Grid: É uma ferramenta do Azure que suporta arquiteturas orientadas a eventos, utilizando o modelo Pub/Sub (Publicação/Assinatura). Ele facilita a distribuição de eventos de maneira eficiente e escalável.
+
+O que é o Azure Service Bus? O Azure Service Bus é um mediador de mensagens totalmente gerenciado, confiável e seguro para a transferência assíncrona de dados. Ele permite a comunicação entre sistemas utilizando filas e tópicos, possibilitando o envio e o recebimento de mensagens de maneira desacoplada e escalável.
+
+É possível criar filas no Azure Service Bus? Sim, é possível criar filas no Azure Service Bus diretamente pelo portal do Azure. Você pode criar um namespace, adicionar filas ao barramento de serviço e configurar credenciais de autorização para que aplicativos clientes possam enviar e receber mensagens de forma segura e eficiente.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## RESUMO DO CURSO
 
 Para ter acesso ao resumo do curso completo, clone e baixe a projeto na sua máquina e acesse o arquivo:
