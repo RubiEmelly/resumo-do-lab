@@ -82,7 +82,7 @@ Gerenciabilidade 🛠️
 
 No contexto dos serviços em nuvem, um SLA (Acordo de Nível de Serviço) define as responsabilidades do provedor de nuvem e os padrões de desempenho que ele deve garantir, como disponibilidade (tempo de uptime), capacidade de armazenamento, velocidade de processamento, suporte técnico e tempo de resposta para resolução de incidentes. O SLA também pode especificar compensações ou penalidades caso o provedor não cumpra as metas acordadas, assegurando que o cliente tenha acesso a um serviço consistente e confiável.
 
---- colocar imagem
+![SLA](2.png)
 
 Ao criar uma Máquina Virtual (VM), o cliente pode escolher configurações de Opções de Disponibilidade e Zona de Disponibilidade, que impactam diretamente o SLA, determinando a redundância e a resiliência do serviço.
 
@@ -106,7 +106,7 @@ Modelo de Responsabilidade Compartilhada
 - PaaS: O provedor gerencia tanto a infraestrutura quanto a plataforma (ferramentas e banco de dados), e o cliente é responsável pelas aplicações e dados.
 - SaaS: O provedor gerencia toda a infraestrutura, plataforma e software, enquanto o cliente é responsável apenas pelos dados e pelo uso do serviço.
 
----colocar imagem
+![Modelo de Responsabilidade Compartilhada](1.png)
 
 Comparação dos Modelos 🆚
 - IaaS: O serviço de nuvem mais flexível. O cliente configura e gerencia o hardware e a infraestrutura para seu aplicativo.
