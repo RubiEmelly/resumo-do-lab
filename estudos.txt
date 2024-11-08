@@ -1,0 +1,720 @@
+prop - public string MyProperty { get; set; }
+---------------------------------------------------------------------------------
+Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos");
+---------------------------------------------------------------------------------
+CASES
+camelCase 
+PascalCase 
+snake_case 
+spinal-case
+---------------------------------------------------------------------------------
+NÚMEROS COM CASAS DECIMAIS
+decimal
+Double
+float
+---------------------------------------------------------------------------------
+DATETIME
+dd/MM/yyyy
+HH:mm - hora e minutos
+---------------------------------------------------------------------------------
+OPERADOR DE ATRIBUIÇÃO
+= 
+---------------------------------------------------------------------------------
+COMBINANDO OPERADORES
++= soma e atribui ao valor
+c*= multiplica e atribui ao valor
+---------------------------------------------------------------------------------
+COVERTER TIPOS
+int a = Convert.ToInt32("5"); -- converter string pra int
+int a = int.Parse("5");
+
+diferença é em valores NULL
+convert aceita, parse não aceita
+
+string a = inteiro.ToString(); - converte int para string
+---------------------------------------------------------------------------------
+OPERADORES CONDICIONAIS
+>=
+<=
+if 
+else
+switch case
+---------------------------------------------------------------------------------
+OPERADORES LÓGICOS
+OR (||) - uma sentença verdadeira já aceita
+AND (&&) - todas as sentenças tem que ser verdadeiras
+NOT (!) - sentenças negativas (!choveu && !estaTarde)
+---------------------------------------------------------------------------------
+OPERADORES ARITMÉTICOS E A CLASSE MATH
+
+Console.WriteLine($"{x} + {y} = {x + y}"); - soma
+
+double pot = Math.Pow(x, y); 
+Console.WriteLine($"{x} ^ {y} = {pot}"); - potência
+
+double radiano = ângulo * Math.PI / 180;
+double seno = Math.Sin(radiano);
+Console.WriteLine($"Seno de {angulo}° = {seno}");
+
+++ - incrementar
+-- - decrementar
+
+double raiz = Math.Sqrt(x)
+Console.WriteLine($"Raiz quadrada de {x} = {raiz}"); - raiz
+---------------------------------------------------------------------------------
+ESTRUTURA DE REPETIÇÃO
+
+break - quebra o laço de repetição
+
+FOR
+for(int contador = 0; contador <= 10; contador++)
+{Console.WriteLine($"{numero} x {contador} = {numero * contador}")}
+
+WHILE - se a sentencia é verdadeira primeiro
+while(contador <= 10)
+{Console.WriteLine($"{contador}° Execução: {numero} x {contador} = {numero * contador}")
+contador++}
+
+DO WHILE - executa pra depois ver se é verdadeiro
+do
+{
+  Console.WriteLine("Digite um número(0 para parar)");
+  numero = COnvert.ToInt32(Console.ReadLine());
+  soma += numero;
+}while(numero != 0);
+Console.WriteLine($"Total da soma dos números digitados é: {soma}");
+---------------------------------------------------------------------------------
+ESTRUTURA DE UM PROGRAMA E MÉTODO PRINCIPAL
+
+.csproj - contém informações referentes a um projeto(build, debug, versão)
+.sln - contém informações que carregam um agrupamento de projetos
+
+dotnet "new" "sln" "-n" "ExemploFundamentos" "-o"
+---------------------------------------------------------------------------------
+ARRAY E LISTAS
+
+array - estrutura de dados que armazena valores do mesmo tipo, com um tamanho fixo.
+int[] array = new int[4]
+int[] array = new int[] {42, 75, 74, 61}
+string[] nomes = {"Jan, "Fev}
+
+indice - é a posição de um determinado valor de um array, sempre começando com zero.
+
+int[] arrayInteirosDObrado = new int[arrayInteiros.Legth * 2];
+Array.Copy(arrayInteiros, arrayInteirosDobrado, arrayInteiros.Leght);
+
+List<string> listaString = new List<string>();
+listaStrin.Add("");
+listaString.Count - quantidade de elemento
+listaString.Capacity - capacidade da lista (array)
+listaString.Remove - remove um item
+foreach - percorre lista
+---------------------------------------------------------------------------------
+PROPRIEDADES, MÉTODOS E CONSTRUTORES
+
+Propriedades - é um membro que oferece um mecanismo flexível para ler, gravar ou calcular o valor um campo particular. get; set
+
+método
+public void Apresentar(){}
+bloco de código que contém uma série de instruções
+
+get; set
+public class Pessoa{
+private string _nome;
+public string Nome
+{get{return _nome.ToUpper();}
+set{
+if(value == "")
+{throw new ArgumentException("O nome não pode ser vazio");}
+_nome = value;}}
+
+modificadores de acesso
+public - qualquer um pode acessar
+private - só a classe que a possui pode acessa-la
+
+tipos de retorno
+void, int...
+
+construtores
+permitem que o programador defina valores padrão, limite a instanciação e grave códigos flexíveis e fáceis de ler.
+public Pessoa(string nome, string sobrenome)
+{Nome=nome; Sobrenome=sobrenome;
+}
+---------------------------------------------------------------------------------
+MANIPULANDO VALORES
+
+concatenando string
+string texto = "N° " + count + " - " + Alunos[count].NomeCompleto;
+
+interpolação de string
+string texto = $"N° {count} - {Alunos[count].NomeCompleto}";
+
+formatando valores monetários
+decimal valorMonetario = 82,40M
+Console.WriteLine($"{valorMonetario}:C}");
+R$82,40
+
+alterando a localização do código
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+alterando a localização da cultura
+Console.WriteLine(valorMonetario.ToString("C", CultureInfo.CreateSpecificCulture("en-US")));
+
+representando porcentagem
+double porcentagem = .3421;
+Console.WriteLine(porcentagem.ToString("P"));
+
+formatando o tipo DateTime
+DateTime data = DateTime.Now
+Console.WriteLine(data.ToString("dd/MM/yyyy HH:mm"));
+
+formatando data e hora
+DateTime data = DateTime.Parse("17/04/2022 18:00");
+Console.WriteLine(data.ToShortTimeString());
+
+parse permite converter string para DateTime
+
+DateTime com TryParse
+string dataString = "2022-04-17 18:00";
+DateTime.TryParseExact(dataString, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DataTime data);
+Console.WriteLine(data)
+---------------------------------------------------------------------------------
+EXCEPTIONS
+
+exceção- ajudam a lidar com quaisquer situações excepcionais ou inesperadas que ocorram quando um programa for executado
+
+leitura de um arquivo
+string[] linhas = file.ReadAllLines("Arquivos/arquivoLeitura.txt");
+foreach(string linha in linhas){Console.WriteLine(linha);}
+
+tratando uma exceção
+try{}catch(Exception ex){Console.WriteLine($"Ocorreu uma exceção genérica. {ex.Message}");}
+
+exceção específica
+try{}catch(FileNotFoundException ex){Console.WriteLine($"Ocorreu um erro na leitura do arquivo. Arquivo não encontrado. {ex.Message}");}
+try{}catch(DirectoryNotFoundException ex){Console.WriteLine("Ocorreu um erro na leitura do arquivo. Caminho da pasta não encontrado" + ex.Message);}
+
+bloco finally
+try{}catch{}finally{} - esse bloco vai ocorrer, mesmo quando houver excessão.
+
+Throw
+throw new Exception
+joga para o catch
+
+Fila - FIFO (primeiro a entrar, primeiro a sair)
+Queue<int> fila = new Queue<int>() - cria uma fila
+Enqueue - adiciona um elemento na fila
+Dequeue - remove um elemento na fila
+
+Pilha - LIFO (ultimo a entrar, primeiro a sair)
+Stack<int> pilha = new Stack<int>() - cria uma pilha
+pilha.Push - adiciona os elementos na pilha
+pilha.Pop - remove um elemento da pilha
+
+Dictionary
+uma coleção de chave-valor para armazenar valores únicos sem uma ordem específica.
+Dictionary<string, string> estados = new Dictionary<string, string>();
+estados.Add("SP", "São Paulo")
+foreach(var item in estados){Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}"}
+estados.Remove("SP") - remove valor
+estados["SP'] = "São Paulo - valor alterado" - altera valor
+---------------------------------------------------------------------------------
+TUPLAS, OPERADOR TERNÁRIO E DESCONSTRUÇÃO DE UM OBJETO COM C#
+
+Tuplas - fornece sintaxe concisa para agrupar vários elementos de dados em uma estrutura de dados leve.
+(int, string, string, decimal) tupla = (1, "Leonardo", "Buta", 10.5M);
+Console.WriteLine($"Id: {tupla.Item1}")
+ou
+(int Id, string Nome, string Sobrenome, decimal Altura) tupla = (1, "Leonardo", "Buta", 1.8M);
+ou
+ValueTuple<int, string, string, decimal> tupla = (1, "Leonardo", "Buta", 1.8M);
+ou
+var outroExemploTuplaCreate = Tuple.Create(1, "Leonardo", "Buta", 1.8M);
+
+Descartes - descarta um valor
+var(sucesso, linhasArquivo, _) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+Desconstrutor
+public void Deconstruct(string nome, string sobrenome){nome = Nome; sobrenome = Sobrenome}
+
+IF Ternário
+int numero = 15;
+bool ehPar = false;
+ehPar = numero % 2 == 0;
+Console.WriteLine($"O número {numero} é " + (ehPar ? "par" : "ímpar"));
+---------------------------------------------------------------------------------
+NUGET, SERIALIZAR E ATRIBUTOS NO C#
+
+pacote - conjunto de códigos úteis, que possibilita o compartilhamento e reuso do código.
+
+nuget - gerenciador de pacotes, que permite os desenvolvedores compartilharem códigos e bibliotecas.
+
+serialização - processo que envolve transformar objetos em um fluxo de bytes para seu armazenamento ou transmissão.
+JSON (JavaScript Notation Object) formato de texto usado para transmitir dados entre aplicações.
+Venda v1 = new Venda(1, "Material de escritório", 25.00M);
+Formatting.Idented - formato tipo banco de dados.
+string serializado = JsonConvert.SerializeObject(v1);
+File.WriteAllText("Arquivo/vendas.json", serializado) - escrevendo um arquivo JSON
+
+deserializando - importar um arquivo JSON
+string conteudoArquivo = FileAllText("Arquivos/vendas.json")
+List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo);
+foreach(Venda venda in listaVenda){Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}");}
+
+[JsonProperty("Nome_Produto")]
+public string Produto { get; set; }
+---------------------------------------------------------------------------------
+POO
+
+POO - um paradigma de programação, ou seja, corresponde a uma técnica de programação para um fim específico.
+Dentro desta técnica, existe 4 pilares: Abstração, Encapsulamento, Herança, Polimorfirmo.
+classes e objetos são o principal conceito.
+
+Paradigma - um modelo de técnicas, estruturas e formas de solucionar um problema.
+Diferente de linguagem de programação. Linguagem de programação implementa paradigmas de programação.
+tipos - programação orientada a objetos, programação estruturada, programação imperativa, programação procedural, programação orientada a eventos, programação lógica e etc.
+
+Abstração - abstrair um objeto do mundo real para um contexto específico, considerando apenas os atributos importantes.
+
+Encapsulamento - serve para proteger uma classe e definir limites para alteração de suas propriedades. Serve para ocultar seu comportamento e expor somente o necessário. 
+public, private
+---------------------------------------------------------------------------------
+HERANÇA E POLIMORFISMO
+
+Herança - permite reutilizar atributos, métodos e comportamento de uma classe em outras classes. Serve para agrupar objetos que são do mesmo tipo, porém com características diferentes.
+public class Aluno : Pessoa{}
+
+Polimorfirmo - vem do grefo e significa "muitas formas". Podemos sobrescrever métodos das classes filhas para que se comportem de maneira diferente e ter sua própria implementação.
+public virtual void Apresentar(){} - classe mãe
+public override void Apresentar(){} - classe filha
+---------------------------------------------------------------------------------
+CLASSES ABSTRATAS E INTERFACES
+
+Classe Abstrata -tem como objetivo ser exclusivamente um modelo para ser herdada, portanto não pode ser instanciada. Pode implementar métodos ou deixá-los a cargo de quem herdar.
+public abstract class conta{}
+
+Construtor por herança
+public Aluno(string nome) : base(nome){}
+
+Classe Selada - tem como objetivo impedir que outras classes façam uma herança dela, ou seja, nenhuma classe pode ser sua derivada. Existe também métodos e propriedades seladas.
+public sealed class Professor : Pessoa{}
+public sealed override void Apresentar(){}
+
+Classe object - A classe System.Object é a mãe de todas as classes na hierarquia do .NET
+Todas as classes derivam, direta ou indiretamente da classe Object, e ela tem como objetivo prover serviços de baixo nível para suas classes filhas.
+
+Interfaces - é um contrato que pode ser ser implementado por uma classe. Como se fosse uma classe abstrata, podendo definir métodos abstratos para serem implementados. Uma interface não pode ser instanciada.
+---------------------------------------------------------------------------------
+BANCO DE DADOS
+
+Bano de dads - uma coleção organizada de informações (ou dados) estruturadas, normalmente armazenadas eletronicamente em um sistema de computador.
+
+Tipos
+Banco de dados relacional - mais usado, armazena dados estruturados, sendo organizado em tabelas, com colunas e linhas, que se relacionam entre si. Ex: SQL Server, ORACLE Database, MySQL.
+Banco de dados não relacional - os dados não são armazenados em tabelas, e sim armazenados de maneira não estruturada ou semi-estruturada. Ex: MongoDB
+
+Tabelas - dados estruturados e organizados logicamente em formato de linha e coluna.
+
+DBMS - Database Management system - sofwate utilizado para acessar, manipular e monitorar um sistema de banco de dados.
+---------------------------------------------------------------------------------
+SQL, TABELAS E TIPOS DE DADOS
+
+SQL - (Structured Query Language): É a linguagem de banco de dados usada para consulta e manipulação de dados.
+SQL Commands - DDL, DCL, DML, TCL, DQL
+
+Database - uma coleção de dados estruturados, agrupados de forma concisa. É composto de tabelas, procedures, views e etc.
+
+tipos de dados 
+String Data Types - char, varchar(n), varchar(max), text, nchar, nvarchar, nvarchar(max), ntext, binary(n), varbinary, varbinary(max), image.
+Numeric Data Types - bit, tinyint, smallint, int, bigint, decimal(p,s), numeric(p,s), smallmoney, Money, float(n), real.
+Date and Time Data Types - datetime, datetime2, smalldatetime, date, time, datetimeoffset, timestamp.
+---------------------------------------------------------------------------------
+MANIPULANDO DADOS
+
+Built-in functions - são funções pré-existentes que auxiliam na manipulação de dados, como por exemplo contar, somar, média, etc.
+
+Comandos
+count - conta os elementos da tabela
+SUM - soma tudo
+MIN - traz o menor valor
+MAX - traz o maior valor
+AVG - faz a média de tudo
+concatenando colunas - select Nome + ', Cor: ' + Cor FROM Produtos
+UPPER - deixa as palavras em maiúsculo
+LOWER - deixa as palavras em minúsculo
+formatar data - SELECT FORMAT(DataCadastro, 'dd-MM-yyyy') FROM Produtos
+group by - agrupa os elementos iguais
+inner join - junta duas ou mais tabelas
+
+Primary Key(PK) - chave única que identifica cada registro na tabela.
+Foreign Key(FK) - chave que identifica um registro existente em outra tabela.
+---------------------------------------------------------------------------------
+BANCO NoSQL
+
+NoSQL - Not Only SQL 
+escabilidade horizontal
+
+tipos de banco NoSQL - MongoDB, Redis, Cassandra, Neo4J e etc.
+
+Banco Coluna
+keyspace: agrupamento de famílias de colunas - database
+Column Family: agrupamento de colunas - table
+Row Key: chave que representa uma linha de coluna - primary key
+Column: representa um valor contendo: name, value timestamp
+
+BSON
+é uma serialização codificada em binário de documentos semelhantes a JSON;
+contém extensões que permitem a representação de tipos de dados que não fazem parte da especificação JSON. Por exemplo, BSON tem um tipo Date, ObjectID.
+---------------------------------------------------------------------------------
+API
+
+API - é uma forma de comunicação entre computadores ou programas de computadores. Em outras palavras, é um software que fornece informações para outro software.
+---------------------------------------------------------------------------------
+ENTITY FRAMEWORK COMC#
+
+Entity Framework é um framework ORM (Object-Relational Mapping) criado para facilitar a integração om o banco de dados, mapeando tabelas e gerando comandos SQL de forma automática.
+UI - Business Layer - Data Layer (EF) - Database
+
+CRUD
+C - Create (insert); R - Read (select); U - Update (update); D - Delete (delete)
+
+dotnet build
+dotnet watch run
+---------------------------------------------------------------------------------
+DOCKER
+
+Container - os contêineres são uma tecnologia usada para reunir um aplicativo e todos os seus arquivos necessários em um ambiente de tempo de execução. Como uma unidade, o contêiner pode ser facilmente movido e executado em qualquer sistema operacional, em qualquer contexto.
+
+Docker - com o Docker, é possível lidar com os containers como se fossem máquinas virtuais modulares e extremamente leves. Além disso, os containers oferecem maior flexibilidade para você criar, implantar, copiar e migrar um container de um ambiente para outro. Isso otimiza as aplicações em nuvem (privada e pública).
+
+CÓDIGOS
+Executando um contêiner
+docker pull ubuntu
+docker run ubuntu
+docker run ubuntu sleep 10
+docker run ubuntu sleep 1500
+docker stop [id]
+docker run --help
+docker run -it ubuntu
+
+Executando aplicações no contêiner
+docker run -dti  ubuntu 
+docker exec -it [id ou nome]  /bin/bash
+
+Excluindo e nomeando contêineres
+docker stop [id]
+docker rm [id]
+docker rmi [imagem]
+docker run -dti --name Ubuntu-A ubuntu
+
+Copinado arquivos para o contêiner
+docker exec -ti Ubuntu-A /bin/bash
+docker exec Ubuntu-A mkdir /destino/
+docker exec Ubuntu-A mkdir ls -l /
+nano Arquivo.txt
+docker cp arquivo.txt Ubuntu-A:/aula/
+
+Copiando arquivos do container
+docker cp Ubuntu-A:/destino/Meuzip.zip  Zipcopia.zip
+
+Criando um contêiner do MySQL
+docker cp Ubuntu-A:/destino/Meuzip.zip  Zipcopia.zip
+
+Acessando um container externamente
+# docker pull mysql
+# docker run -e MYSQL_ROOT_PASSWORD=Senha123 --name mysql-A -d -p 3306:3306 mysql
+# docker exec -it mysql-A bash
+# mysql -u root -p --protocol=tcp
+CREATE DATABASE aula;
+show databases;
+# docker inspect mysql-A
+# mysql -u root -p --protocol=tcp
+---------------------------------------------------------------------------------
+TESTES UNITÁRIOS COM C#
+
+Testes
+São fundamentais para garantir a qualidade e o correto funcionamento de um software. Serve principalmente para validar se o que foi construído está atendendo ao que se é esperado.
+
+Teste Unitário
+São testes realizados diretamente no código fonte, buscando testar a menor unidade de código possível, através de cenários que podem ocorrer no sistema.
+
+Vantagem - Qualidade.
+
+A anotação [Fact] é usada para indicar que o método é um teste que não aceita parâmetros e deve ser executado como um caso de teste individual.
+A anotação [Theory] permite que você forneça dados de entrada diferentes para o mesmo teste, enquanto [InlineData] especifica os valores a serem utilizados em cada execução do teste.
+---------------------------------------------------------------------------------
+REACT
+
+Node.js é um runtimede JavaScript, fo desenvolvido emcima do motor JavaScript V8 - engine criada pelo Google e utilizada nos navegadores Chrome.
+
+NPM - (Node Package Manager), é o gerenciador de pacote padrão do node. Ele é utilizado como gerenciamento de pacotes, fluxo de trabalho em linguagens de programação e ferramenta para construção de front-ends em aplicativos e websites.
+
+YARN - um gerenciador de pacotes para aplicar comandos prontos ao código de uma aplicação.
+
+React DevTools - uma extensão disponível para o Chrome, Firefox e também como um aplicativo independente que permite inspecionar a hierarquia de componentes do React nas Ferramentas do desenvolvedor do navegador.
+---------------------------------------------------------------------------------
+HTML
+
+WEB - Constituída por 3 partes: HTML, CSS, JAVASCRIPT
+
+HTML - Linguagem de Marcação de Hipertexto. O HTML é o componente básico da web, ele permite inserir o conteúdo e estabelecer a estrutura básica de um website. Portanto, ele serve para dar significado e organizar as informações de uma página web.
+extensão .html ou .htm
+
+Meta Tags - são linhas de código HTML ou "etiquetas" que, entre outras coisas, descrevem o conteúdo do seu site para os buscadores. É nelas que você vai inserir palavras-chave que facilitarão a vida do usuários na hora de te encontrar.
+
+Listas - ordenadas, desordenadas, por definição.
+
+Tabelas - organizar as informações (table)
+
+Formulário - um formulário de preenchimento de dados ou que resulta em uma ação desejada utilizando a linguagem de marcação HTML. (form)
+
+HTML Semântico - forma de deixar o site com suas informações bem explicadas e compreensíveis para o computador.
+---------------------------------------------------------------------------------
+CSS
+
+CCS - linguagem Cascading Style Sheet e é usado para estilizar elementos nas páginas web. O CSS separa o conteúdo da representação visual do site.
+
+Seletores - usados para direcionar os elementos HTML em nossas páginas da web que queremos estilizar.
+
+Box Models - em uma página web, cada elemento é representado como um box retangular.
+Cada box possui 4 edges: margin edge, border edge, padding edge e contente edge.
+
+Flexbox - projetado tanto como um modelo de layout unidimensional quanto como um método capaz de organizar espacialmente os elementos em uma interface, além de possuir capacidades avançadas de alinhamento.
+eixo principal (flex-direction) e eixo transversal (encontra-se na direção perpendicular a ele).
+flex
+
+Pseudo-classes - é uma palavra-chave adicionada a seletores que especifica um estado especial do elemento selecionado.
+
+Media Queries - utilização de Media Types com uma ou mais expressões envolvendo características de uma media para definir formatações para diversos dispositivos.
+@media
+---------------------------------------------------------------------------------
+JAVASCRIPT
+
+JavaScript - linguagem de programação de alto nível criada, a principio, para ser executada em navegadores e manipular comportamentos de páginas web.
+
+Variáveis - uma variável em JavaScript deve começar com uma letra, underline (_), os caracteres subsequentes podem também ser números (0-9). Devido JavaScript ser case-sensitive, letras incluem caracteres de "A" a "Z" (maiúsculos) e caracteres de "a" a "z" (minúsculos).
+
+Declarações de variáveis - existe 3 tipos em JavaScript: var, let e const
+
+Arrays - são geralemente descritas como "lista de objetos"; elas são basicamente objetos que contem múltiplos valores armazenados em uma lista.
+
+Funcionalidades do ES6+ - filter(selecionar), find(encontrar), findIndex(índice), reduce(agregar), some(algum), every(todos).
+---------------------------------------------------------------------------------
+DOM (DOCUMENT OBJECT MODEL)
+
+DOM - é a representação de dados dos objetos que compõem a estrutura e o conteúdo de um documento na web. O DOM é uma interface de programação para os documentos HTML e XML. Representa a página de forma que os programas possam alterar a estrutura do documento, alterar o estilo e conteúdo. O DOM representa o documento com nós e objetos.
+
+Operações Básicas - getElementsByTagName, getElementsByClassName, getElementById, querySelector.
+---------------------------------------------------------------------------------
+REACT
+
+REACT JS - é uma biblioteca JavaScript para a criação de interfaces de usuário.
+
+Biblioteca - compartilhar soluções por meio de funções ou métodos.
+
+Framework - uma ferramenta que vai ajudar a ter como único objetivo focar em desenvolver o projeto, não em detalhes de configurações.
+
+Ciclo de vida de um componente - Constructor, 1-getDerivedStateFromProps, 2-componentDidMount, 3-shouldComponentUpdate, 4-render, 5-getSnapshotBeforeUpdate, 6-componentDidUpdate, 7-componentWillUnmount
+---------------------------------------------------------------------------------
+PROJETO REACT
+
+Babel - é um Transpilador JavaScript de código aberto e gratuito, a Babel possui como uma das principais características converter código JavaScript atual em uma versão que o navegador possa executar.
+
+Webpack - é um module bundler (empacotador de módulos) para JavaScript, em outras palavras, ele junta os arquivos JS 9e também outros formatos) da sua aplicação (seja arquivos seus ou dependências externas) em um arquivo só (ou mais de um), de forma otimizada.
+---------------------------------------------------------------------------------
+CONCEITOS FUNDAMENTAIS PARA REACT
+
+JSX - é uma forma de criar elementos para serem utilizados como templates de aplicações React.
+
+---------------------------------------------------------------------------------
+CODE STYLE
+
+Eslint - é uma ferramenta de análise de código que, juntamente com a sua extensão de mesmo nome disponível no VSCode, permite identificar erros quanto ao padrão de escrita que definimos.
+
+Prettier - é um formator de código que visa ajudar os desenvolvedores a escrever aplicações que são mais fáceis de entender e mais uniformizadas entre as diversas formas de programar que existem.
+
+Editor Config - um plugin que obriga o editor de código a seguir de forma prescrita os padrões macro essenciais de formatação configurados pelo usuário. Ajuda a estabelecer um estilo de código entre diferentes editores, independente da tecnologia utilizada.
+---------------------------------------------------------------------------------
+REACT CLI
+
+npx create-react-app gitfind
+
+fetch - Consumir dados de um serviço externo da nossa aplicação
+---------------------------------------------------------------------------------
+MÉTODOS IMPORTANTES PARA ARRAYS
+
+MAP - cria um novo array, não modifica o array original, realiza as operações em ordem.
+array.map(callback, thisArg)
+callback(item, index, array) - Callback: função a ser executada em cada elemento.
+thisArg(opcional): valor de "this" dentro da função de callback.  
+
+FILTER - cria um novo array, não modifica o array original, array passa num "filtro" e retorna só o que quer de acordo com a condição que foi feita.
+array.filter(callback, thisArg)
+
+REDUCE - executa uma função em todos os elementos do array, retornando um valor único.
+array.reduce(callbackFn, initialValue)
+Callback: função a ser executada a partir do acumulador.
+initialValue: valor sobre o qual o retorno final irá atuar.
+Accumulator/prevValue: acumulador de todas as chamadas de callbackFn.
+currentValue: elemento atual sendo acessado pela função.
+---------------------------------------------------------------------------------
+ESTILIAÇÃO COM STYLED-COMPONENTS
+
+Styled Components - é uma biblioteca que possibilita escrever códigos CSS dentro do JavaScript.
+
+import { createGlobalStyle } from 'styled-components';
+import styled from "styled-components";
+import { Link } from'react-router-dom";
+---------------------------------------------------------------------------------
+HOOKS BÁSICOS
+
+Hooks - permitem o uso de vários recursos de forma simples através de funções. Eles também ajudam a organizar a lógica utilizada dentro dos componentes.
+
+useState - função para lidar com estado dentro do componente. Retorna um array.
+useEffect - trabalha com o ciclo de vida do componente.
+useMemo - memoriza um valor (cálculo).
+useCallback - memoriza uma função.
+---------------------------------------------------------------------------------
+FORMULÁRIOS
+
+React Hook Forms - npm install react-hook-form
+
+Requisição com Axios - Axios é um cliente HTTP baseado-em-promessas para o node.js e para o navegador. É isomórfico (pode rodar no navegador e no node,js com a mesma base de código). No lado do servidor usa o código nativo do node.js http, enquanto no lado do cliente (navegador) usa XMLHttpRequests.
+npm install axios
+yarn add axios
+---------------------------------------------------------------------------------
+TYPESCRIT
+
+TypeScript - é um superste de JavaScript, ou seja, um conjunto de ferramentas e formas mais eficientes de escrever código JavaScript, adicionando recursos que não estão presentes de maneira nativa na linguagem.
+
+Benefícios - potencial de detecção de erros durante o desenvolvimento de projetos e a possibilidade e incluir a inteligência da IDE que está sendo usada.
+Linguagem fortemente tipada.
+
+Conceitos básicos - Tipagem estática, Inferência de tipos, Interfaces, Types, enum.
+---------------------------------------------------------------------------------
+CONVERTENDO PROJETO JAVASCRIPT PARA TYPESCRIPT
+
+index.jsx - index.tsx
+styles.js - styles.ts
+types.ts
+---------------------------------------------------------------------------------
+NEXTJS
+
+Next JS - é um framework React com foco emprodução e eficiência criado e mantdo pela equipe da Vercel, o Nextjs busca reunir diversas funcionalidades como renderização hibrida e estática de contudo, suportea TpeScript, pre-fetching, sistema de rotas, pacotes de funcionalidades e diversos plugins. 
+Diferencial é que consegue controlar o método de renderização que quer na aplicação como: 
+SSR - Server-side Rendering
+SPA - Single Page Application
+SSG - Static SIte Generation
+
+Para criar rotas no Next.js, deve criar um arquivo dentro da pasta pages. Cada arquivo dentro dessa pasta se torna uma rota acessível na sua aplicação. A estrutura de pastas dentro de "pages" determina as rotas da aplicação.
+---------------------------------------------------------------------------------
+COMPUTAÇÃO EM NUVEM
+
+A comutação em nuvem é o fornecimento de serviços de computação pela internet, habilitando inovações mais rápidas, recursos flexíveis e economias de escala.
+
+TIPOS
+Nuvem Privada - as organizações criam um ambiente em nuvem em seu datacenter. As organizações são responsáveis por operar os serviços que fornecem. Não fornece acesso aos usuários fora da organização.
+Nuvem Pública - pertencente a serviços de nuvem ou provedor de hosting. Fornece recursos e serviços a várias organizações e usuários. Acessada via conexão de rede segura (geralmente pela internet).
+Nuvem Híbrida - combina nuvens públicas e privadas para permitir que os aplicativos sejam executados no local mais adequado.
+
+COMPARAÇÂO
+Nuvem pública - nenhuma despesa de capital para escalar verticalmente. Os aplicativos podem ser provisionados e desprovisionados rapidamente. As organizações pagam apenas pelo que utilizam.
+Nuvem privada - as organizações tem controle total sobre os recursos e a segurança. As organizações são responsáveis pela manutenção e pelas atualizações de hardware.
+Nuvem híbrida - as organizações determinam onde executar seus aplicativos. As organizações controlam a segurança, a conformidade e os requisitos legais. Fornece a maior flexibilidade.
+
+COMPARAR CapEx e OpEx
+CapEx (despesas de capital) - o gasto inicial de dinheiro em infraestrutura física. As despesas do CapEx tem um valor que se reduz com o tempo.
+OpEx (despesas operacionais) -  gastar com produtos e serviços conforme necessário, pagamento conforme o uso. Seja cobrado imediatamente.
+
+Os provedores de serviços em nuvem operam em um modelo baseado no consumo, o que significa que os usuários finais pagam somente pelos recursos que usam.
+---------------------------------------------------------------------------------
+DESAFIO - LOCALIZANDO SERVIÇOS POR CATEGORIA
+
+INTRODUÇÃO AOS Portal do Microsoft Azure, para conhecer a plataforma e os serviços que ela oferece.
+
+Painel Esquerdo - Botão (Todos os serviços), apresenta todos os serviços que o Azure disponibiliza. Por exemplo, IA+Machine Learning, Banco de dados, DevOps, Computação.
+
+CATEGORIA COMPUTAÇÃO
+Possui vários serviços incluídos como - Área de Trabalho Virtual do Azure, haves SSH, Imagens, Máquinas Virtuais e etc.
+CATEGORIA REDE
+Possui vários serviços incluídos como - Bastions(rede segura), Links, Zonas de DNS, Firewalls.
+CATEGORIA ARMAZENAMENTO
+Possui vários serviços incluídos como - Servidores, Discos, Migração.  
+
+---------------------------------------------------------------------------------
+BENEFÍCIOS DA NUVEM AZURE
+
+Alta disponibilidade - concentra em garantir a disponibilidade máxima, independentemente de interrupções ou eventos que possam ocorrer.
+Escalabilidade - capacidade de ajustar recursos para atender a demanda. Adicionar mais recursos para lidar melhor com o aumento da demanda. Não paga além do necessário pelos serviços. 
+Elasticidade - um salto repentino acentuado na demanda, os recursos implantado podem ser expandidos (automaticamente ou manualmente). Uma queda significativa na demanda, os recursos implantados são reduzidos.
+Confiabilidade - infraestrutura confiável e resiliente, recursos implantados em várias regiões do mundo.
+Previsibilidade - avance com confiança, seja no desempenho ou no custo.
+Segurança - nuvem oferece ferramentas de segurança que atendem as necessidades dos clientes.
+Governança - auditoria baseada em nuvem ajuda a sinalizar qualquer recursos que esteja fora de conformidade com seus padrões corporativos e fornece estratégias de mitigação. Patches de software e atualizações aplicadas automaticamente. Nuvem atualizada, protegida e bem gerenciada.
+Gerenciabilidade - O gerenciamento da nuvem diz respeito a gerenciar seus recursos de nuvem. Implantar recursos com base em um modelo pré-configurado, removendo a necessidade de configuração manual.
+---------------------------------------------------------------------------------
+DESAFIO DE PROJETO - CRIANDO MÁQUINAS VIRTUAIS NA AZURE
+
+No contexto de serviços em nuvem, um SLA (Acordo de Nível de Serviço) define as responsabilidades do provedor de nuvem e os padrões de desempenho que ele deve oferecer, como disponibilidade (tempo de uptime), capacidade de armazenamento, velocidade de processamento, suporte técnico, e tempo de resposta para resolução de incidentes. O SLA também pode especificar compensações ou penalidades caso o provedor não cumpra as metas acordadas, garantindo que o cliente tenha um serviço consistente e confiável.
+
+Ao criar uma Máquina Virtual, possui a configuração de escolher Opções de disponibilidade e Zona de Disponibilidade, que recai ao quadro SLA.
+Em criar uma conta de armazenamento, quanto mais replica os dados entre datacenters e regiões, vai influenciar o SLA, quanto mais replico, menos tempo de disponibilidade.
+---------------------------------------------------------------------------------
+TIPOS DE SERVIÇO DE NUVEM NA AZURE
+
+IaaS (infraestrutura como serviço) -> (servidores e armazenamento -- firewalls/segurança da rede -- planta/prédio físico do datacenter) ->infraestrutura de TI de pagamento conforme o uso alugando servidores, máquinas virtuais, armazenamento, redes e sistemas operacionais de um provedor de nuvem. 
+
+PaaS (plataforma como serviço) -> (servidores e armazenamento -- firewalls/segurança da rede -- planta/prédio físico do datacenter -- sistemas operacionais -- ferramentas para desenvolvedores, análise de negócios de gerenciamento de database) -> fornece um ambiente para a criação, o teste e a implantação de aplicativos de software, sem focar no gerenciamento da infraestrutura subjacente. 
+
+SaaS (software como serviço) -> (servidores e armazenamento -- firewalls/segurança da rede -- planta/prédio físico do datacenter -- sistemas operacionais -- ferramentas para desenvolvedores, análise de negócios de gerenciamento de database -- aplicativos/apps hospedados) -> os usuários se conectam e usam aplicativos com base em nuvem pela internet.
+
+Modelo de responsabilidade compartilhada 
+IaaS: O provedor gerencia a infraestrutura, e o cliente é responsável pelo sistema operacional, aplicativos e dados.
+PaaS: O provedor cuida da infraestrutura e plataforma, e o cliente gerencia as aplicações e dados.
+SaaS: O provedor gerencia toda a infraestrutura e software, e o cliente é responsável apenas pelos dados e uso do serviço.
+Em resumo, quanto mais baixo o serviço (IaaS), mais responsabilidades o cliente tem; quanto mais alto (SaaS), mais responsabilidades ficam com o provedor.
+
+COMPARAÇÃO
+IaaS - o serviço de nuvem mais flexível. Configura e gerencia o hardware para seu aplicativo.
+PaaS - focado no desenvolvimento de aplicativos. O gerenciamento de plataforma é realizado pelo provedor de nuvem.
+SaaS - modelo de preço de pagamento conforme o uso. Os usuários pagam pelo software que utilizam em um modelo de assinatura.
+---------------------------------------------------------------------------------
+DESAFIO DO PROJETO - CONFIGURANDO UMA INSTÂNCIA DE BANCO DE DADOS NA AZURE
+
+No painel esquerdo, opção Banco de dados SQL
+Configurar - Nome do Banco, Criar e utilizar um Servidor, modelo de redundância que quer utilizar, e quanto vai gastar.
+---------------------------------------------------------------------------------
+DbaaS - banco de dados como serviço.
+---------------------------------------------------------------------------------
+DEPLOY 
+
+O deploy na nuvem Microsoft Azure é o processo de disponibilizar uma aplicação ou serviço na infraestrutura da Azure. Ele pode ser feito de várias formas, como:
+- App Services para aplicações web.
+- Máquinas Virtuais (VMs) para maior controle de ambiente.
+- Contêineres (AKS, ACI) para aplicações baseadas em Docker.
+- Azure Functions para soluções serverless.
+- Azure DevOps para automação de deploy com CI/CD.
+- O Azure oferece escalabilidade, alta disponibilidade, segurança e integração com outras soluções da Microsoft.
+
+Quais as formas que conseguimos realizar um deploy na Microsoft Azure Cloud?
+Visual Studio, Portal, Powershell, Azure CLI.
+---------------------------------------------------------------------------------
+CI/CD
+
+CI/CD é um conjunto de práticas que automatiza a integração e a entrega de código, visando melhorar a qualidade e acelerar o lançamento de software. CI envolve integrar o código frequentemente e testar automaticamente, enquanto CD automatiza a entrega para produção.
+---------------------------------------------------------------------------------
+CONCEITOS BÁSICOS E DESENVOLVIMENTO DE FILAS.
+
+Mensagem: É um pacote de dados que pode estar em diferentes formatos, como XML, JSON ou bytes.
+
+Evento: Refere-se a uma notificação leve que indica uma condição ou alteração de estado em um sistema.
+
+Filas: Armazenam mensagens até que o aplicativo receptor esteja disponível para recebê-las e processá-las. Elas garantem a entrega confiável de mensagens em uma arquitetura assíncrona.
+
+Tópicos: Permitem múltiplas assinaturas independentes, possibilitando que diferentes assinantes recebam a mesma mensagem, de acordo com seu interesse.
+
+Event Grid: É uma ferramenta do Azure que suporta arquiteturas orientadas a eventos, utilizando o modelo Pub/Sub (Publicação/Assinatura). Ele facilita a distribuição de eventos de maneira eficiente e escalável.
+
+O que é o Azure Service Bus? O Azure Service Bus é um mediador de mensagens totalmente gerenciado, confiável e seguro para a transferência assíncrona de dados. Ele permite a comunicação entre sistemas utilizando filas e tópicos, possibilitando o envio e o recebimento de mensagens de maneira desacoplada e escalável.
+
+É possível criar filas no Azure Service Bus? Sim, é possível criar filas no Azure Service Bus diretamente pelo portal do Azure. Você pode criar um namespace, adicionar filas ao barramento de serviço e configurar credenciais de autorização para que aplicativos clientes possam enviar e receber mensagens de forma segura e eficiente.
